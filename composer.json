@@ -1,6 +1,8 @@
 {
     "name": "ake/tools",
     "description": "工具包",
+    "license": "MIT",
+    "homepage": "https://github.com/ake-1216/tools",
     "autoload": {
         "psr-4": {
             "Ake\\Tools\\": "src/"
@@ -14,7 +16,8 @@
     },
     "authors": [
         {
-            "name": "阿珂"
+            "name": "阿珂",
+            "email": "2454345235@qq.com"
         }
     ],
     "require": {
@@ -28,5 +31,4 @@
             ]
         }
     },
-    "license": "MIT"
 }
