@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Services\Service;
+use {{ namespacedModel }} as Model;
+
+class {{ class }} extends Service
+{
+    protected $modelClass = '{{ namespacedModel }}';
+}

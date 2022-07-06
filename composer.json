@@ -1,0 +1,30 @@
+{
+    "name": "ake/tools",
+    "description": "工具包",
+    "autoload": {
+        "psr-4": {
+            "Ake\\Tools\\": "src/"
+        },
+        "files": [
+            "src/Helper/function.php",
+            "src/Laravel/admin.php",
+            "src/Laravel/function.php",
+            "src/Laravel/migrate.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "阿珂"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^8.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ake\\Tools\\AkeServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Services;
+
+use Illuminate\Database\Eloquent\Builder;
+
+class Service
+{
+    #模型
+    protected $modelClass;
+
+    /**
+     * 模型类对象
+     * @var Builder
+     */
+    public $model;
+
+    public function __construct()
+    {
+        #实例化model并赋值
+        $this->model = (new $this->modelClass)->newQuery();
+    }
+
+    #详情
+    public function detail(int $id)
+    {
+        return $this->model->find($id)->toArray();
+    }
+
+    #seo 获取
+    public function seo(int $id)
+    {
+        return $this->model->select(['seo_title', 'seo_keyword', 'seo_description'])->find($id)->toArray();
+    }
+}
