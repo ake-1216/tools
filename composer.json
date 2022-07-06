@@ -1,7 +1,7 @@
 {
     "name": "ake/tools",
     "description": "工具包",
-    "license": "library",
+    "license": "MIT",
     "homepage": "https://github.com/ake-1216/tools",
     "autoload": {
         "psr-4": {
