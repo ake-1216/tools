@@ -27,5 +27,6 @@
                 "Ake\\Tools\\AkeServiceProvider"
             ]
         }
-    }
+    },
+    "license": "MIT"
 }
