@@ -10,15 +10,14 @@ class Service
     protected $modelClass;
 
     /**
-     * 模型类对象
-     * @var Builder
+     * @description:模型类对象
+     * @return Builder
+     * @Author:AKE
+     * @Date:2022/7/7 14:34
      */
-    public $model;
-
-    public function __construct()
+    public function model()
     {
-        #实例化model并赋值
-        $this->model = (new $this->modelClass)->newQuery();
+        return (new $this->modelClass)->newQuery();
     }
 
     #详情
