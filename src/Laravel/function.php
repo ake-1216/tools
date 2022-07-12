@@ -35,3 +35,45 @@ if (!function_exists('diffForHumans')){
         return $dt->diffForHumans();
     }
 }
+
+if (!function_exists("error")){
+    /**
+     * @description:错误返回
+     * @param string $msg
+     * @param int $error_code
+     * @param int $code
+     * @return \Illuminate\Http\JsonResponse
+     * @Author:AKE
+     * @Date:2022/4/8 10:42
+     */
+    function error(string $msg = "", int $error_code = 10001, int $code = 200)
+    {
+        return response()->json([
+            "error_code" => $error_code,
+            "msg" => $msg,
+            'time' => time(),
+        ],$code);
+    }
+}
+
+
+if (!function_exists("success")){
+    /**
+     * @description:成功返回
+     * @param $data
+     * @param string $msg
+     * @param int $code
+     * @return \Illuminate\Http\JsonResponse
+     * @Author:AKE
+     * @Date:2022/3/14 10:49
+     */
+    function success($data = [], string $msg = '查询成功',  int $code = 201)
+    {
+        return response()->json([
+            "error_code" => 0,
+            'msg' => $msg,
+            'data' => $data,
+            'time' => time(),
+        ], $code);
+    }
+}
