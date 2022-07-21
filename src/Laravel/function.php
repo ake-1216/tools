@@ -56,7 +56,6 @@ if (!function_exists("error")){
     }
 }
 
-
 if (!function_exists("success")){
     /**
      * @description:成功返回

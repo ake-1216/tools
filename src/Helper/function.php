@@ -49,7 +49,6 @@ if (!function_exists('infinite')) {
     }
 }
 
-
 if (!function_exists('arrayTree')) {
     /**
      * @see 完成无限级分类
@@ -74,7 +73,6 @@ if (!function_exists('arrayTree')) {
         return $newArray;
     }
 }
-
 
 if (!function_exists('objToArr')){
     /**
@@ -108,13 +106,13 @@ if (!function_exists('formatTime')){
 if (function_exists('editorToText')) {
     /**
      * @description: 富文本内容转纯文字
-     * @param {string} $editor 富文本内容
-     * @param {int} $num 截取字数,默认截取全部
-     * @return {string} 返回处理之后的文本
+     * @param string $editor 富文本内容
+     * @param int $num 截取字数,默认截取全部
+     * @return string 返回处理之后的文本
      * @Author: AKE
      * @Date: 2021-05-25 15:19:00
      */
-    function editorToText($editor, $num = 2147483647)
+    function editorToText(string $editor, $num = 2147483647)
     {
         $content_01 = $editor; //富文本内容
         $content_02 = htmlspecialchars_decode($content_01); //把一些预定义的 HTML 实体转换为字符
@@ -128,8 +126,8 @@ if (function_exists('editorToText')) {
 if (!function_exists('scandirFolder')) {
     /**
      * @description: 根据目录名扫描获取此目录下所有文件夹及文件
-     * @param {string}文件目录
-     * @return {array} 包含所有文件及文件夹的数组
+     * @param string 文件目录
+     * @return array 包含所有文件及文件夹的数组
      * @Author: AKE
      * @Date: 2021-05-24 10:03:56
      */

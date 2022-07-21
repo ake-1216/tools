@@ -120,8 +120,8 @@ class MakeService extends GeneratorCommand
         #第四个参数,为描述
         #第五个参数,为默认值 InputOption::VALUE_NONE 时必须为 null
         return [
-            ['model', 'm', InputOption::VALUE_NONE, 'The model that the service applies to.'],
-            ['base', 'b', InputOption::VALUE_NONE, 'The model that the service applies to.'],
+            ['model', 'm', InputOption::VALUE_NONE, '是否关联 model '],
+            ['base', 'b', InputOption::VALUE_NONE, '创建基类 service '],
         ];
     }
 
