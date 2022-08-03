@@ -20,9 +20,6 @@
             "email": "2454345235@qq.com"
         }
     ],
-    "require": {
-        "laravel/framework": "^8.0"
-    },
     "extra": {
         "laravel": {
             "providers": [
