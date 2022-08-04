@@ -37,7 +37,7 @@ class MakeService extends GeneratorCommand
 
         $model = $this->option('model');
 
-        return $model ? $this->replaceModel($stub, $name) : $stub;
+        return $model ? $this->replaceModel($stub, $this->argument('name')) : $stub;
     }
 
     /**
