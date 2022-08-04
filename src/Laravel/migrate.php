@@ -26,7 +26,7 @@ if (!function_exists('migrateOrder')){
      */
     function migrateOrder(Blueprint $table)
     {
-        $table->integer('order')->default(0)->comment('排序')->nullable();
+        $table->integer('order')->default(100)->comment('排序')->nullable();
         $table->index('order');
     }
 }
