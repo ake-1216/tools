@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use App\Services\Service;
+use Ake\Tools\Laravel\Base\Service;
 
 class {{ class }} extends Service
 {

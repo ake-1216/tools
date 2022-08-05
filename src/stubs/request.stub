@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use Ake\Tools\Laravel\Base\Request;
+
+class {{ class }} extends Request
+{
+    public function rules()
+    {
+        return [];
+    }
+}
