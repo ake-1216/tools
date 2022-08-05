@@ -59,3 +59,18 @@ if (!function_exists('migrateTree')){
         $table->index(['order', 'parent_id']);
     }
 }
+
+if (!function_exists('migratePublish')){
+    /**
+     * @description:发布字段
+     * @param Blueprint $table
+     * @Author:AKE
+     * @Date:2022/8/5 15:17
+     */
+    function migratePublish(Blueprint $table)
+    {
+        $table->tinyInteger('is_publish')->default(1)->comment('是否发布')->nullable();
+        $table->timestamp('published_at')->comment('发布时间')->nullable();
+        $table->index(['is_publish', 'published_at']);
+    }
+}

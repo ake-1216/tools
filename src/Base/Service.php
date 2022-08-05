@@ -3,7 +3,7 @@
  * @file service 基类
  */
 
-namespace Ake\Tools\Laravel\Base;
+namespace Ake\Tools\Base;
 
 use Illuminate\Database\Eloquent\Builder;
 

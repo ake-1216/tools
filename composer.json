@@ -9,9 +9,9 @@
         },
         "files": [
             "src/Helper/function.php",
-            "src/Laravel/admin.php",
-            "src/Laravel/function.php",
-            "src/Laravel/migrate.php"
+            "src/Helper/admin.php",
+            "src/Helper/laravel.php",
+            "src/Helper/migrate.php"
         ]
     },
     "authors": [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ake\Tools\Laravel\Trait;
+namespace Ake\Tools\Trait;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\RouteDependencyResolverTrait as DepResolver;

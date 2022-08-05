@@ -4,7 +4,7 @@
  * @file request 请求基类
  */
 
-namespace Ake\Tools\Laravel\Base;
+namespace Ake\Tools\Base;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;

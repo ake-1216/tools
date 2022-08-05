@@ -4,7 +4,7 @@
  * @file Model 基类
  */
 
-namespace Ake\Tools\Laravel\Base;
+namespace Ake\Tools\Base;
 
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Illuminate\Database\Eloquent\Builder;
