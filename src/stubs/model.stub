@@ -2,10 +2,8 @@
 
 namespace {{ namespace }};
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Ake\Tools\Laravel\Base\Model;
+use Ake\Tools\Base\Model;
 
 class {{ class }} extends Model
 {
-    use HasFactory;
 }
