@@ -21,11 +21,17 @@ class AkeServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPublishing();
+        $this->registerLoad();
     }
 
-    protected function registerPublishing()
+    private function registerPublishing()
     {
         #发布 stub 存根文件到根目录
         $this->publishes([__DIR__ . '/stubs/' => base_path('stubs/')], 'ake-tools-stub');
+    }
+
+    private function registerLoad()
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'ake-tools');
     }
 }

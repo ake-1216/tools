@@ -4,7 +4,7 @@
  * @file 验证手机号格式（自定义规则）
  */
 
-namespace Ake\Tools\Rules;
+namespace Ake\Tools\Rule;
 
 use Illuminate\Contracts\Validation\Rule;
 
@@ -29,6 +29,6 @@ class Mobile implements Rule
      */
     public function message()
     {
-        return trans('validation.mobile');
+        return trans('ake-tools::validation.mobile');
     }
 }
