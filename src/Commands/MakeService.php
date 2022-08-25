@@ -33,8 +33,6 @@ class MakeService extends GeneratorCommand
     {
         $stub = parent::buildClass($name);
 
-        if ($this->option('base')) return $stub;
-
         $model = $this->option('model');
 
         return $model ? $this->replaceModel($stub, $this->argument('name')) : $stub;
@@ -49,7 +47,6 @@ class MakeService extends GeneratorCommand
      */
     protected function getStub()
     {
-        if ($this->option('base')) return $this->path('/stubs/service.base.stub');
         return $this->option('model') ?
             $this->path('/stubs/service.plain.stub') :
             $this->path('/stubs/service.stub');
@@ -121,7 +118,6 @@ class MakeService extends GeneratorCommand
         #第五个参数,为默认值 InputOption::VALUE_NONE 时必须为 null
         return [
             ['model', 'm', InputOption::VALUE_NONE, '是否关联 model '],
-//            ['base', 'b', InputOption::VALUE_NONE, '创建基类 service '],
         ];
     }
 
