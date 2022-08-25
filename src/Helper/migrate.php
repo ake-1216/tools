@@ -26,7 +26,7 @@ if (!function_exists('migrateOrder')){
      */
     function migrateOrder(Blueprint $table)
     {
-        $table->integer('order')->default(0)->comment('排序')->nullable();
+        $table->integer('order')->default(100)->comment('排序')->nullable();
         $table->index('order');
     }
 }
@@ -54,7 +54,7 @@ if (!function_exists('migrateTree')){
      */
     function migrateTree(Blueprint $table)
     {
-        $table->integer('order')->default(0)->comment('排序')->nullable();
+        $table->integer('order')->default(100)->comment('排序')->nullable();
         $table->integer('parent_id')->default(0)->comment('所属父级')->nullable();
         $table->index(['order', 'parent_id']);
     }

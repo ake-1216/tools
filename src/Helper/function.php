@@ -150,3 +150,31 @@ if (!function_exists('scandirFolder')) {
         return $list;
     }
 }
+
+if(!function_exists('isMobile')){
+    /**
+     * @description:判断是否是手机访问
+     * @return bool 是返回 true 否返回false
+     * @Author:AKE
+     * @Date:2022/8/19 9:59
+     */
+    function isMobile()
+    {
+        #获取请求头的浏览器类型
+        $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+        #判断是否是 windows
+        $is_pc = (strpos($agent, 'windows nt')) ? true : false;
+        #判断是否是 mac
+        $is_mac = (strpos($agent, 'mac os')) ? true : false;
+        #判断是否是 iphone
+        $is_iphone = (strpos($agent, 'iphone')) ? true : false;
+        #判断是否是 android
+        $is_android = (strpos($agent, 'android')) ? true : false;
+        #判断是否是 ipad
+        $is_ipad = (strpos($agent, 'ipad')) ? true : false;
+        #如果是 window 或者 mac 则为pc 返回 false
+        if ($is_pc || $is_mac) return false;
+        #如果是 iphone ，android ， ipad 则为手机 返回 true
+        if ($is_iphone || $is_android || $is_ipad)  return true;
+    }
+}
