@@ -47,6 +47,14 @@ class config
         return $this;
     }
 
+    #菜单样式
+    public function gridMenuAction()
+    {
+        config([
+            'grid.grid_action_class' => Ake\Tools\Dcat\Menu\MenuAction::class,
+        ]);
+    }
+
     private function grid()
     {
         Grid::resolving(function (Grid $grid) {
