@@ -51,8 +51,9 @@ class config
     public function gridMenuAction()
     {
         config([
-            'grid.grid_action_class' => Ake\Tools\Dcat\Menu\MenuAction::class,
+            'admin.grid.grid_action_class' => Ake\Tools\Dcat\Menu\MenuAction::class,
         ]);
+        return $this;
     }
 
     private function grid()
