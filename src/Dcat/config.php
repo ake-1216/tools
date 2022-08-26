@@ -11,6 +11,7 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Form;
 use Dcat\Admin\Show;
 use Dcat\Admin\Grid\Filter;
+use Ake\Tools\Dcat\Menu\MenuAction;
 
 class config
 {
@@ -51,7 +52,7 @@ class config
     public function gridMenuAction()
     {
         config([
-            'admin.grid.grid_action_class' => Ake\Tools\Dcat\Menu\MenuAction::class,
+            'admin.grid.grid_action_class' => MenuAction::class,
         ]);
         return $this;
     }
