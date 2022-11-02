@@ -52,4 +52,24 @@ class Model extends Base
     {
         $query->orderBy(DB::raw("convert(`{$field}` using gbk)"), $order);
     }
+
+    /**
+     * @description:find in set 数组 or 搜索
+     * @param $query
+     * @param $field
+     * @param array $value
+     * @param string $join ( or 或者 and 查询)
+     * @Author:AKE
+     * @Date:2022/9/7 10:28
+     */
+    public function scopeFindInSetArr($query, $field, array $value, string $join = 'AND')
+    {
+        $arr = [];
+        foreach ($value as $v){
+            if (!$v) continue;
+            $arr[] = "FIND_IN_SET({$v},{$field})";
+        }
+        $sql = join(" {$join} ", $arr);
+        $query->whereRaw($sql);
+    }
 }

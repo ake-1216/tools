@@ -52,3 +52,18 @@ if (!function_exists('formOrder')){
         return $form;
     }
 }
+
+if (!function_exists('gridOrderSort')){
+    /**
+     * @description: 表格排序查询
+     * @param Grid $grid
+     * @return Grid
+     * @Author:AKE
+     * @Date:2022/9/11 12:11
+     */
+    function gridOrderSort(Grid  $grid) :Grid
+    {
+        $grid->model()->oldest('order')->latest('id');
+        return $grid;
+    }
+}

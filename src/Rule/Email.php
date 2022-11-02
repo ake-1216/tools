@@ -1,14 +1,10 @@
 <?php
 
-/**
- * @file 验证邮箱格式（自定义规则）
- */
-
 namespace Ake\Tools\Rule;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Mobile implements Rule
+class Email implements Rule
 {
     /**
      * 判断是否通过验证规则
@@ -19,7 +15,8 @@ class Mobile implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match("/^1[3456789]\d{9}$/", $value);
+        $regex = "/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.|\-]?)*[a-zA-Z0-9]+(\.[a-zA-Z]{2,3})+$/";
+        return preg_match($regex, $value);
     }
 
     /**
@@ -29,6 +26,6 @@ class Mobile implements Rule
      */
     public function message()
     {
-        return trans('ake-tools::validation.mobile');
+        return trans('ake-tools::validation.email');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Client;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,8 +17,11 @@ if (!function_exists('disk')) {
     {
         if (!$content) return '';
         $disk = $disk ?: config('admin.upload.disk');
-        $storage = Storage::disk($disk);
-        return $storage->url($content);
+        if (strpos($content, 'http') === false){
+            $storage = Storage::disk($disk);
+            return $storage->url($content);
+        }
+        return $content;
     }
 }
 
@@ -71,8 +75,38 @@ if (!function_exists("success")){
         return response()->json([
             "error_code" => 0,
             'msg' => $msg,
-            'data' => $data,
+            'data' => is_array($data) ? $data : json_decode(json_encode($data), 1),
             'time' => time(),
         ], $code);
+    }
+}
+
+if (!function_exists('txVideoUrl2MiniUrl')){
+    /**
+     * @description:腾讯视频地址生成可小程序播放地址
+     * @param string $url
+     * @return string
+     * @Author:AKE
+     * @Date:2022/9/14 10:32
+     */
+    function txVideoUrl2MiniUrl(string $url)
+    {
+        $vids = strstr($url, 'page/');//字符串查询到page/o0560pmnr2z.html
+        $vids_arr = explode('/', $vids);//转为数组
+        $vid = strstr($vids_arr[1], '.html', true);//获取o0560pmnr2z
+
+        $api_url = 'http://vv.video.qq.com/getinfo?vids=' . $vid . '&platform=101001&charge=0&otype=json';//接口地址
+        $res_json = (new Client())->get($api_url)->getBody()->getContents();
+        $str = str_replace('QZOutputJson=', '', $res_json);
+        $str1 = str_replace('};', '}', $str);
+        $res = json_decode($str1, true);
+
+        if ($res['code'] == "0.0") {
+            $url = $res['vl']['vi'][0]['ul']['ui'][0]['url'];
+            $fn = $res['vl']['vi'][0]['fn'];
+            $fvkey = $res['vl']['vi'][0]['fvkey'];
+            return $url . $fn . '?vkey=' . $fvkey;
+        }
+        return $url;
     }
 }

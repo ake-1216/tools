@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Ake\Tools\Laravel\Base\Request;
+use Ake\Tools\Base\Request;
 
 class {{ class }} extends Request
 {
