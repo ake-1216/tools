@@ -5,7 +5,7 @@ namespace Ake\Tools\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
-class MakeService extends GeneratorCommand
+class Service extends GeneratorCommand
 {
 
     /**
@@ -13,7 +13,7 @@ class MakeService extends GeneratorCommand
      * 控制台命令名。
      * @var string
      */
-    protected $name = 'make:service';
+    protected $name = 'ake:service';
 
     /**
      * The console command description.

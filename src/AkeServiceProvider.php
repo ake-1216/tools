@@ -3,13 +3,13 @@
 namespace Ake\Tools;
 
 use Ake\Tools\Commands\GeneratePermission;
-use Ake\Tools\Commands\MakeService;
+use Ake\Tools\Commands\Service;
 use Illuminate\Support\ServiceProvider;
 
 class AkeServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        MakeService::class,
+        Service::class,
         GeneratePermission::class,
     ];
 

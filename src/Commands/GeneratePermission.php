@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class GeneratePermission extends Command
 {
     #命令
-    protected $signature = 'admin:menu-permission';
+    protected $signature = 'ake:permission';
 
     #描述
     protected $description = '备份菜单,填充菜单数据,填充权限';
