@@ -10,7 +10,7 @@ if(!function_exists('enterLineFeed')){
      */
     function enterLineFeed(string $string = '')
     {
-        return str_replace("\r\n","<br>",$string);
+        return str_replace(["\r\n","\n", "\r"],"<br>",$string);
     }
 }
 
