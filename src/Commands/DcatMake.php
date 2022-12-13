@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class DcatMake extends GeneratorCommand
 {
     #命令
-    protected $signature = 'admin:make';
+    protected $signature = 'ake:make';
 
     #描述
     protected $description = 'dcat后台make命令，用来创建控制器，仓库，翻译文件等';
