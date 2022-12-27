@@ -63,7 +63,7 @@ if (!function_exists('gridOrderSort')){
      */
     function gridOrderSort(Grid  $grid) :Grid
     {
-        $grid->model()->oldest('order')->latest('id');
+        $grid->model()->order('order')->orderBy('id', 'desc');
         return $grid;
     }
 }

@@ -137,13 +137,13 @@ class DcatMake extends GeneratorCommand
     {
         switch ($this->genre){
             case 0:
-                $path = $this->path('stubs/admin/controller.stub');
+                $path = $this->stubPath('stubs/admin/controller.stub');
                 break;
             case 1:
-                $path  = $this->path('stubs/admin/repository.stub');
+                $path  = $this->stubPath('stubs/admin/repository.stub');
                 break;
             case 2:
-                $path = $this->path('stubs/admin/lang.stub');
+                $path = $this->stubPath('stubs/admin/lang.stub');
                 break;
             default:
                 throw new \InvalidArgumentException('数据错误');
@@ -178,9 +178,14 @@ class DcatMake extends GeneratorCommand
         return $path;
     }
 
-    #生成完整地址
     private function path($path)
     {
-        return __DIR__ . $path;
+        return base_path($path);
+    }
+
+    #生成完整地址
+    private function stubPath($path)
+    {
+        return __DIR__ . '/' . $path;
     }
 }

@@ -9,7 +9,7 @@ class DataActionException extends \Exception
     /**
      * @var string[] 错误消息数组
      */
-    public $message_arr = [
+    public array $message_arr = [
         'model' => '模型，表名不存在',
     ];
 
