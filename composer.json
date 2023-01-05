@@ -11,7 +11,9 @@
             "src/Helper/function.php",
             "src/Helper/admin.php",
             "src/Helper/laravel.php",
-            "src/Helper/migrate.php"
+            "src/Helper/migrate.php",
+            "src/Helper/Admin/grid.php",
+            "src/Helper/Admin/form.php"
         ]
     },
     "authors": [

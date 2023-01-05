@@ -1,24 +1,8 @@
 <?php
-
+/**
+ * @file dcat 表单自定义函数
+ */
 use Dcat\Admin\Form;
-use Dcat\Admin\Grid;
-
-if(!function_exists('gridDialog')){
-    /**
-     * @description:grid 弹窗创建,编辑
-     * @param Grid $grid
-     * @return Grid
-     * @Author:AKE
-     * @Date:2021/11/25 9:19
-     */
-    function gridDialog(Grid &$grid): Grid
-    {
-        $grid->enableDialogCreate();
-        $grid->showQuickEditButton();
-        $grid->disableEditButton();
-        return $grid;
-    }
-}
 
 if(!function_exists('formSeo')){
     /**
@@ -37,7 +21,6 @@ if(!function_exists('formSeo')){
     }
 }
 
-
 if (!function_exists('formOrder')){
     /**
      * @description:排序字段
@@ -53,17 +36,19 @@ if (!function_exists('formOrder')){
     }
 }
 
-if (!function_exists('gridOrderSort')){
+if (!function_exists('formPublish')){
     /**
-     * @description: 表格排序查询
-     * @param Grid $grid
-     * @return Grid
+     * @description: 表单发布信息
+     * @param Form $form
+     * @return Form
      * @Author:AKE
-     * @Date:2022/9/11 12:11
+     * @Date:2023/1/5 13:33
      */
-    function gridOrderSort(Grid  $grid) :Grid
+    function formPublish(Form $form) :Form
     {
-        $grid->model()->order('order')->orderBy('id', 'desc');
-        return $grid;
+        $form->switch('is_publish')->default(1);
+        $form->datetime('published_at')->default(date('Y-m-d H:i:s'));
+        return $form;
     }
 }
+
