@@ -3,6 +3,7 @@
 namespace Ake\Tools;
 
 use Ake\Tools\Commands\DcatMake;
+use Ake\Tools\Commands\ExportSql;
 use Ake\Tools\Commands\GeneratePermission;
 use Ake\Tools\Commands\Service;
 use Illuminate\Support\ServiceProvider;
@@ -12,7 +13,8 @@ class AkeServiceProvider extends ServiceProvider
     protected $commands = [
         Service::class,
         GeneratePermission::class,
-        DcatMake::class
+        DcatMake::class,
+        ExportSql::class,
     ];
 
     public function register()
