@@ -13,7 +13,8 @@
             "src/Helper/laravel.php",
             "src/Helper/migrate.php",
             "src/Helper/Admin/grid.php",
-            "src/Helper/Admin/form.php"
+            "src/Helper/Admin/form.php",
+            "src/Helper/Admin/detail.php"
         ]
     },
     "authors": [
