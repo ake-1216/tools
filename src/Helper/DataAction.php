@@ -40,6 +40,11 @@ class DataAction
     private $id_name = 'id';
 
     /**
+     * @var array 搜索条件
+     */
+    private $where = [];
+
+    /**
      * @param array $config
      * [
      * 'model' => 'model实例对象',
@@ -136,6 +141,9 @@ class DataAction
     private function child(int $pid) : array
     {
         $model = $this->model()->where($this->parent_id, $pid);
+        if (is_array($this->where) && !empty($this->where)) {
+            $model = $model->where($this->where);
+        }
         if ($this->order) {
             foreach ($this->order as $key => $item){
                 $model = $model->orderBy($key, $item);
