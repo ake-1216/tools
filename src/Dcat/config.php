@@ -57,6 +57,17 @@ class config
         return $this;
     }
 
+    #上传目录设置
+    public function upload($dir = '')
+    {
+        if (!$dir) $dir = date('Y-m');
+        config([
+            'admin.upload.directory.image' => 'images/' . $dir,
+            'admin.upload.directory.file' => 'images/' . $dir
+        ]);
+        return $this;
+    }
+
     private function grid()
     {
         Grid::resolving(function (Grid $grid) {
