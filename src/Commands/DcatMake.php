@@ -91,7 +91,33 @@ class DcatMake extends GeneratorCommand
     protected function replaceCopy($name)
     {
         $path = $this->copyPath($name);
-        return $this->files->get($path);
+        $str = $this->files->get($path);
+        switch ($this->genre){
+            case 0:
+                #分割名字的为数组
+                $arr = explode('/', $name);
+                $base_arr = explode("/", $this->base_name);
+                #修改控制器名字
+                $str = str_replace(ucfirst(last($arr)) . 'Controller', ucfirst(last($base_arr)) . 'Controller', $str);
+
+                #删除掉数组中的最后一个元素
+                unset($arr[array_search(last($arr), $arr)]);
+                unset($base_arr[array_search(last($base_arr), $base_arr)]);
+                #命名空间前缀
+                $prefix = 'App\Admin\Controllers\\';
+                #替换命名空间
+                $str = str_replace($prefix . join('\\', $arr) , $prefix . join('\\', $base_arr), $str);
+                #去掉末尾的斜杠
+                $str = rtrim($str, '\\');
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                throw new \InvalidArgumentException('数据错误');
+        }
+        return $str;
     }
 
     #获取默认的namespace

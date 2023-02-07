@@ -26,6 +26,7 @@ class AkeServiceProvider extends ServiceProvider
     {
         $this->registerPublishing();
         $this->registerLoad();
+        $this->registerWechat();
     }
 
     private function registerPublishing()
@@ -37,5 +38,13 @@ class AkeServiceProvider extends ServiceProvider
     private function registerLoad()
     {
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'ake-tools');
+    }
+
+    private function registerWechat()
+    {
+        $this->publishes([
+            __DIR__ . '/config/Wechat.php' => config_path('Wechat.php'),
+            __DIR__ . '/database/migration/add_wechat_field.php' => base_path('/database/migration/add_wechat_field.php'),
+        ], 'ake-wechat');
     }
 }
