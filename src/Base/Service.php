@@ -51,4 +51,22 @@ class Service
             'updated_at' => $date,
         ];
     }
+
+    #get 获取
+    public function get()
+    {
+        return $this->model()->oldest('order')->latest('id')->get();
+    }
+
+    #获取用户信息
+    public function getUserInfo($guard = '')
+    {
+        return auth($guard)->user();
+    }
+
+    #获取登录用户id
+    public function getUserId($guard = '')
+    {
+        return auth($guard)->id();
+    }
 }

@@ -88,6 +88,7 @@ class config
     {
         Show::resolving(function (Show $show){
             $show->disableDeleteButton();
+            $show->disableEditButton();
         });
     }
 

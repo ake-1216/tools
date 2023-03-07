@@ -176,5 +176,109 @@ if(!function_exists('isMobile')){
         if ($is_pc || $is_mac) return false;
         #如果是 iphone ，android ， ipad 则为手机 返回 true
         if ($is_iphone || $is_android || $is_ipad)  return true;
+        return false;
+    }
+}
+
+if (! function_exists('custom_value')) {
+    /**
+     * Return the default value of the given value.
+     *
+     * @param  mixed  $value
+     * @return mixed
+     */
+    function custom_value($value, ...$args)
+    {
+        return $value instanceof Closure ? $value(...$args) : $value;
+    }
+}
+
+
+if (!function_exists('array_get')) {
+    /**
+     * @description:数据根据key获取内容
+     * @param $array
+     * @param $key
+     * @param $default
+     * @return mixed
+     * @Author:AKE
+     * @Date:2023/1/6 15:10
+     */
+    function array_get($array, $key, $default = null)
+    {
+        if (is_null($key)) {
+            return $array;
+        }
+
+        if (isset($array[$key])) {
+            return $array[$key];
+        }
+
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
+                return custom_value($default);
+            }
+
+            $array = $array[$segment];
+        }
+        return $array;
+
+    }
+}
+
+if (!function_exists('file_name')){
+    /**
+     * @description:返回文件名
+     * @param $path
+     * @return array|string|string[]
+     * @Author:AKE
+     * @Date:2023/3/1 15:52
+     */
+    function file_name($path)
+    {
+        return pathinfo($path, PATHINFO_FILENAME);
+    }
+}
+
+if (!function_exists('file_ext')){
+    /**
+     * @description:返回文件后缀
+     * @param $path
+     * @return array|string|string[]
+     * @Author:AKE
+     * @Date:2023/3/1 15:52
+     */
+    function file_ext($path)
+    {
+        return pathinfo($path, PATHINFO_EXTENSION);
+    }
+
+}
+
+if (!function_exists('file_dir')){
+    /**
+     * @description:返回路径目录
+     * @param $path
+     * @return array|string|string[]
+     * @Author:AKE
+     * @Date:2023/3/1 15:53
+     */
+    function file_dir($path)
+    {
+        return pathinfo($path, PATHINFO_DIRNAME);
+    }
+}
+
+if (!function_exists('file_basename')){
+    /**
+     * @description:返回文件完整名字
+     * @param $path
+     * @return array|string|string[]
+     * @Author:AKE
+     * @Date:2023/3/1 15:54
+     */
+    function file_basename($path)
+    {
+        return pathinfo($path, PATHINFO_BASENAME);
     }
 }
