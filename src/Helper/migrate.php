@@ -74,3 +74,17 @@ if (!function_exists('migratePublish')){
         $table->index(['is_publish', 'published_at']);
     }
 }
+
+
+if (!function_exists('migrateOther')){
+    /**
+     * @description:其他json字段
+     * @param Blueprint $table
+     * @Author:AKE
+     * @Date:2023/4/11 13:35
+     */
+    function migrateOther(Blueprint $table)
+    {
+        $table->json('other')->comment('其他')->nullable();
+    }
+}
