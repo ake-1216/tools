@@ -110,3 +110,24 @@ if (!function_exists('txVideoUrl2MiniUrl')){
         return $url;
     }
 }
+
+
+if (!function_exists('getSetting')){
+    /**
+     * @description:setting缓存
+     * @param $key
+     * @param $sub_key
+     * @param $default
+     * @return mixed
+     * @Author:AKE
+     * @Date:2023/3/23 14:00
+     */
+    function getSetting($key, $sub_key = null, $default = null)
+    {
+        $setting = (new \Ake\Tools\Services\AdminSetting())->get();
+        $res = array_get($setting, $key, $default);
+        if (!is_null($sub_key))
+            return  is_array($res) ? array_get($res, $sub_key, $default) : array_get(json_decode($res, true), $sub_key, $default);
+        return $res;
+    }
+}
