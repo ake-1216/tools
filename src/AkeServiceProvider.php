@@ -44,7 +44,14 @@ class AkeServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/config/Wechat.php' => config_path('Wechat.php'),
-            __DIR__ . '/database/migration/add_wechat_field.php' => base_path('/database/migration/add_wechat_field.php'),
+            __DIR__ . '/database/migration/add_wechat_field.php' => database_path('/migration/add_wechat_field.php'),
         ], 'ake-wechat');
+    }
+
+    private function publishImage()
+    {
+        $this->publishes([
+            __DIR__ . '/database/migration/create_images_table.php' => database_path('/migration/'. date('Y_m_d_') .'create_images_table.php'),
+        ], 'ake-image');
     }
 }
