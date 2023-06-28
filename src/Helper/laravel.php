@@ -115,9 +115,9 @@ if (!function_exists('txVideoUrl2MiniUrl')){
 if (!function_exists('getSetting')){
     /**
      * @description:setting缓存
-     * @param $key
-     * @param $sub_key
-     * @param $default
+     * @param $key admin_setting 表 slug
+     * @param $sub_key json数组的key 可以用 . 链接
+     * @param $default 获取不到的默认值
      * @return mixed
      * @Author:AKE
      * @Date:2023/3/23 14:00

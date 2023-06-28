@@ -43,15 +43,15 @@ class AkeServiceProvider extends ServiceProvider
     private function registerWechat()
     {
         $this->publishes([
-            __DIR__ . '/config/Wechat.php' => config_path('Wechat.php'),
-            __DIR__ . '/database/migration/add_wechat_field.php' => database_path('/migration/add_wechat_field.php'),
+            __DIR__ . '/config/Wechat.php' => config_path('wechat.php'),
+            __DIR__ . '/database/migration/add_wechat_field.php' => database_path('/migrations/'. date('Y_m_d_') .'add_wechat_field.php'),
         ], 'ake-wechat');
     }
 
     private function publishImage()
     {
         $this->publishes([
-            __DIR__ . '/database/migration/create_images_table.php' => database_path('/migration/'. date('Y_m_d_') .'create_images_table.php'),
+            __DIR__ . '/database/migration/create_images_table.php' => database_path('/migrations/'. date('Y_m_d_') .'create_images_table.php'),
         ], 'ake-image');
     }
 }

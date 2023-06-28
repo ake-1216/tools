@@ -32,8 +32,7 @@ if (!function_exists('gridOrderSort')){
      */
     function gridOrderSort(Grid  $grid) :Grid
     {
-        $grid->model()->order('order')->orderBy('id', 'desc');
-        return $grid;
+        return $grid->model()->orderBy('order')->orderBy('id', 'desc');
     }
 }
 
