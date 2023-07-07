@@ -127,7 +127,11 @@ if (!function_exists('getSetting')){
         $setting = (new \Ake\Tools\Services\AdminSetting())->get();
         $res = array_get($setting, $key, $default);
         if (!is_null($sub_key))
-            return  is_array($res) ? array_get($res, $sub_key, $default) : array_get(json_decode($res, true), $sub_key, $default);
-        return $res;
+            return  is_array($res) ? Arr::get($res, $sub_key, $default) : Arr::get(json_decode($res, true), $sub_key, $default);
+        try{
+            return json_decode($res, true);
+        }catch (\Exception $e){
+            return $res;
+        }
     }
 }
