@@ -112,7 +112,7 @@ if (!function_exists('txVideoUrl2MiniUrl')){
 }
 
 
-if (!function_exists('getSetting')){
+if (!function_exists('getAdminSetting')){
     /**
      * @description:setting缓存
      * @param $key admin_setting 表 slug
@@ -122,7 +122,7 @@ if (!function_exists('getSetting')){
      * @Author:AKE
      * @Date:2023/3/23 14:00
      */
-    function getSetting($key, $sub_key = null, $default = null)
+    function getAdminSetting($key, $sub_key = null, $default = null)
     {
         $setting = (new \Ake\Tools\Services\AdminSetting())->get();
         $res = array_get($setting, $key, $default);
