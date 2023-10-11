@@ -282,3 +282,52 @@ if (!function_exists('file_basename')){
         return pathinfo($path, PATHINFO_BASENAME);
     }
 }
+
+if (!function_exists("substr_format")){
+    /**
+     * @description:超出部分替换成 ...
+     * @param string|null $text
+     * @param int $length
+     * @param string $replace
+     * @param string $encoding
+     * @return mixed|string
+     * @Author:AKE
+     * @Date:2023/9/26 13:15
+     */
+    function substr_format($text, int $length, string $replace='...', string $encoding='UTF-8')
+    {
+        if ($text && mb_strlen($text, $encoding) > $length) {
+            return mb_substr($text, 0, $length, $encoding) . $replace;
+        }
+        return $text;
+    }
+}
+
+if (!function_exists("safe_filter")){
+    /**
+     * @description:php防注入和XSS攻击通用过滤.
+     * @param $arr
+     * @Author:AKE
+     * @Date:2023/10/9 14:44
+     */
+    function safe_filter(&$arr)
+    {
+        $ra=Array('/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/','/script/','/javascript/','/vbscript/','/expression/','/applet/','/meta/','/xml/','/blink/','/link/','/style/','/embed/','/object/','/frame/','/layer/','/title/','/bgsound/','/base/','/onload/','/onunload/','/onchange/','/onsubmit/','/onreset/','/onselect/','/onblur/','/onfocus/','/onabort/','/onkeydown/','/onkeypress/','/onkeyup/','/onclick/','/ondblclick/','/onmousedown/','/onmousemove/','/onmouseout/','/onmouseover/','/onmouseup/','/onunload/');
+        if (is_array($arr))
+        {
+            foreach ($arr as $key => $value)
+            {
+                if (!is_array($value)) {
+                    if (!get_magic_quotes_gpc())//不对magic_quotes_gpc转义过的字符使用addslashes(),避免双重转义。
+                    {
+                        $value  = addslashes($value); //给单引号（'）、双引号（"）、反斜线（\）与NUL（NULL字符）加上反斜线转义
+                    }
+                    $value       = preg_replace($ra,'',$value);     //删除非打印字符，粗暴式过滤xss可疑字符串
+                    $arr[$key]     = strip_tags($value); //去除 HTML 和 PHP 标记并转换为HTML实体
+                } else {
+                    safe_filter($arr[$key]);
+                }
+            }
+        }
+    }
+}
