@@ -10,6 +10,7 @@ use EasyWeChat\Factory as EasyWechat;
 use Ake\Tools\Base\Service;
 use App\Models\User as Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -76,7 +77,9 @@ class Wechat extends Service
         $token_str = $token_url . 'appid=' . $config['app_id'] . '&secret=' . $config['secret'] . '&code=' . $code . '&grant_type=' . $this->grant_type;
         $userinfo = json_decode(file_get_contents($token_str), 1);
         if (isset($userinfo['errcode'])) throw new \Exception('授权失败');
-        $user_id = $this->actionLogin($userinfo[$this->wechat_key]);
+        $key = Arr::get($userinfo, $this->wechat_key);
+        if (!$key) throw new \Exception("登录失败，无法获取");
+        $user_id = $this->actionLogin($key);
         $bool = $this->login($user_id);
         if (!$bool) throw new \Exception('登录失败');
         return true;
@@ -89,11 +92,12 @@ class Wechat extends Service
         $app = $this->mb;
         $user = $app->oauth->userFromCode($input['code']);
         $wechat = $user->getRaw();
-        $wechat = $wechat[$this->wechat_key];
+        $key = Arr::get($wechat, $this->wechat_key);;
+        if (!$key) throw new \Exception("登录失败，无法获取");
         $avatarUrl = $user->getAvatar();
         $nickname = $user->getName();
         $data = compact('avatarUrl', 'nickname');
-        $user_id = $this->actionLogin($wechat, $data);
+        $user_id = $this->actionLogin($key, $data);
         $bool = $this->login($user_id);
         if (!$bool) throw new \Exception('登录失败');
         return true;
@@ -111,7 +115,8 @@ class Wechat extends Service
         try {
             #解析信息
             $decryptedData = $app->encryptor->decryptData($sessionKey, $request->iv, $request->encryptedData);
-            $wechct = $data[$this->wechat_key];
+            $wechct = Arr::get($data, $this->wechat_key);
+            if (!$wechct) throw new \Exception("登录失败，无法获取");
             #处理用户信息
             $user_id =  $this->actionLogin($wechct, $decryptedData);
         }catch (\Exception $exception){
